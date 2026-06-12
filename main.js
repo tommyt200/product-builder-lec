@@ -1,35 +1,30 @@
 const speechBubble = document.getElementById('speech-bubble');
-const regionCards = document.querySelectorAll('.region-card');
+const attractionCards = document.querySelectorAll('.attraction-card');
 
-const regionMessages = {
-  space: "The universe is huge! Did you know there are billions of stars out there?",
-  ocean: "The ocean is deep and full of mysterious creatures. Let's dive in!",
-  nature: "Earth is our beautiful home. There are so many plants and animals to meet!"
+const buddyMessages = {
+  space: "Ready for lift-off? 🚀 We're going to visit the moon and see the stars! Let's go!",
+  ocean: "Glub glub! 🌊 Put on your goggles, we're going to find some friendly whales!",
+  nature: "Rrrrroar! 🦁 The jungle is full of life. Let's see how many animals we can find!"
 };
 
-regionCards.forEach(card => {
+attractionCards.forEach(card => {
   card.addEventListener('click', () => {
     const region = card.getAttribute('data-region');
-    const message = regionMessages[region];
+    const message = buddyMessages[region];
     speak(message);
-    
-    // Visual feedback
-    card.style.transform = "scale(0.95)";
-    setTimeout(() => {
-      card.style.transform = "";
-    }, 150);
   });
 });
 
 function speak(message) {
-  // Add a little "pop" animation to the bubble
-  speechBubble.style.transform = "scale(0.8)";
+  // Pop animation
+  speechBubble.style.transition = "none";
+  speechBubble.style.transform = "scale(0.8) translateY(20px)";
   speechBubble.style.opacity = "0";
   
   setTimeout(() => {
     speechBubble.textContent = message;
-    speechBubble.style.transition = "transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s";
-    speechBubble.style.transform = "scale(1)";
+    speechBubble.style.transition = "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
+    speechBubble.style.transform = "scale(1) translateY(0)";
     speechBubble.style.opacity = "1";
-  }, 100);
+  }, 50);
 }

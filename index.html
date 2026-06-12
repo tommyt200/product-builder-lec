@@ -8,36 +8,49 @@
   <link href='/style.css' rel='stylesheet'>
 </head>
 <body>
-  <header style="text-align: center; margin-bottom: 30px;">
-    <h1 style="font-size: 3rem; color: var(--accent-color); margin-bottom: 10px;">Learning Adventure! 🚀</h1>
-    <p style="font-size: 1.2rem; color: #666;">What do you want to explore today?</p>
+  <!-- Floating Clouds Background -->
+  <div class="cloud" style="top: 10%; left: 5%;"></div>
+  <div class="cloud" style="top: 25%; right: 10%;"></div>
+  <div class="cloud" style="top: 60%; left: 15%;"></div>
+
+  <header>
+    <div class="logo-area">
+      <h1>KIDS LEARNING ADVENTURE 🎡</h1>
+      <p>The funnest way to explore the world!</p>
+    </div>
   </header>
 
-  <div class="learning-map" id="learning-map">
-    <div class="region-card" data-region="space">
-      <span class="region-icon">🚀</span>
-      <h2 class="region-title">Space Adventure</h2>
+  <main class="park-map" id="learning-map">
+    <div class="attraction-card" data-region="space">
+      <span class="attraction-icon">🛸</span>
+      <h2 class="attraction-title">Galaxy Ride</h2>
     </div>
-    <div class="region-card" data-region="ocean">
-      <span class="region-icon">🌊</span>
-      <h2 class="region-title">Ocean Discovery</h2>
+    <div class="attraction-card" data-region="ocean">
+      <span class="attraction-icon">🐋</span>
+      <h2 class="attraction-title">Deep Sea Quest</h2>
     </div>
-    <div class="region-card" data-region="nature">
-      <span class="region-icon">🌲</span>
-      <h2 class="region-title">Nature Explorer</h2>
+    <div class="attraction-card" data-region="nature">
+      <span class="attraction-icon">🦁</span>
+      <h2 class="attraction-title">Safari Journey</h2>
     </div>
-  </div>
+  </main>
 
-  <div class="mascot-container">
+  <!-- Improved Mascot Guide -->
+  <div class="mascot-wrap">
     <div class="speech-bubble" id="speech-bubble">
-      Hi! I'm your guide! Ready to learn something amazing? Click a region to start!
+      Welcome to the Park! 🎡 I'm Buddy, your adventure guide! Tap a ride to start your journey!
     </div>
     <div class="mascot">
+      <div class="mascot-cap"></div>
+      <div class="mascot-eye eye-left"></div>
+      <div class="mascot-eye eye-right"></div>
+      <div class="mascot-blush blush-left"></div>
+      <div class="mascot-blush blush-right"></div>
       <div class="mascot-mouth"></div>
     </div>
   </div>
 
-  <div id="disqus_thread" style="margin-top: 100px; width: 80%; max-width: 800px;"></div>
+  <div id="disqus_thread" style="margin-top: 100px; width: 80%; max-width: 800px; background: white; padding: 20px; border-radius: 30px;"></div>
   <script>
     var disqus_config = function () {
       this.page.url = window.location.href;

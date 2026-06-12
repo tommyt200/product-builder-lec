@@ -1,142 +1,260 @@
 :root {
-  --primary-color: #FFD93D; /* Bright Yellow */
-  --secondary-color: #6BCB77; /* Soft Green */
-  --accent-color: #FF6B6B; /* Soft Red/Pink */
-  --bg-color: #F9F9F9;
-  --text-color: #333;
-  --card-bg: #FFFFFF;
-  --bubble-bg: #FFFFFF;
-  --mascot-size: 150px;
+  --primary-color: #FF7EB3; /* Bubblegum Pink */
+  --secondary-color: #7AFEFD; /* Sky Blue */
+  --accent-color: #FFD93D; /* Sunny Yellow */
+  --land-color: #6BCB77; /* Grass Green */
+  --path-color: #F9D371; /* Sand Path */
+  --text-dark: #2D3436;
+  --bg-gradient: linear-gradient(180deg, #A2D9FF 0%, #E1F5FE 100%);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  background: var(--bg-gradient);
+  color: var(--text-dark);
   font-family: 'Quicksand', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  min-height: 100vh;
   margin: 0;
-  padding: 20px;
-  overflow-x: hidden;
-}
-
-/* Character Container */
-.mascot-container {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 1000;
+  overflow-x: hidden;
+  padding-bottom: 150px;
 }
 
-/* Simple Mascot Shape */
-.mascot {
-  width: var(--mascot-size);
-  height: var(--mascot-size);
-  background-color: var(--primary-color);
-  border-radius: 50% 50% 45% 45%;
+/* Header Section */
+header {
+  text-align: center;
+  padding: 50px 20px;
+  width: 100%;
+}
+
+.logo-area h1 {
+  font-size: 3.5rem;
+  color: #FF4D6D;
+  text-shadow: 4px 4px 0px #FFF, 6px 6px 0px rgba(0,0,0,0.1);
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+.logo-area p {
+  font-size: 1.4rem;
+  color: #4A69BD;
+  font-weight: 700;
+}
+
+/* Amusement Park Map */
+.park-map {
   position: relative;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-  animation: float 3s ease-in-out infinite;
+  width: 90%;
+  max-width: 1000px;
+  background: var(--land-color);
+  border-radius: 50px;
+  padding: 60px;
+  box-shadow: inset 0 -10px 0 rgba(0,0,0,0.1), 0 20px 50px rgba(0,0,0,0.15);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 40px;
+  border: 10px solid #FFF;
 }
 
-.mascot::before, .mascot::after { /* Eyes */
+/* Path connection (decorative) */
+.park-map::before {
   content: '';
   position: absolute;
-  top: 40%;
-  width: 15px;
-  height: 20px;
-  background-color: #333;
-  border-radius: 50%;
-}
-
-.mascot::before { left: 30%; }
-.mascot::after { right: 30%; }
-
-.mascot-mouth {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 30px;
-  height: 15px;
-  border-bottom: 3px solid #333;
-  border-radius: 0 0 15px 15px;
-}
-
-/* Speech Bubble */
-.speech-bubble {
-  background: var(--bubble-bg);
+  top: 50%; left: 10%; right: 10%;
+  height: 40px;
+  background: var(--path-color);
   border-radius: 20px;
-  padding: 15px 25px;
-  margin-bottom: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  z-index: 0;
+}
+
+.attraction-card {
   position: relative;
-  max-width: 250px;
-  font-weight: 700;
-  font-size: 1.1rem;
+  background: white;
+  border-radius: 35px;
+  padding: 20px;
+  width: 250px;
   text-align: center;
-  border: 3px solid var(--primary-color);
+  z-index: 1;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 15px 0 #E0E0E0;
+}
+
+.attraction-card:hover {
+  transform: translateY(-10px) rotate(2deg);
+  box-shadow: 0 25px 0 #E0E0E0;
+}
+
+.attraction-card:active {
+  transform: translateY(5px);
+  box-shadow: 0 5px 0 #E0E0E0;
+}
+
+.attraction-icon {
+  font-size: 5rem;
+  display: block;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 5px 5px rgba(0,0,0,0.1));
+}
+
+.attraction-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #2D3436;
+}
+
+/* Mascot - Improved Cute Character */
+.mascot-wrap {
+  position: fixed;
+  bottom: 30px;
+  right: 50px;
+  display: flex;
+  align-items: flex-end;
+  z-index: 2000;
+}
+
+.speech-bubble {
+  background: white;
+  border: 4px solid #FF7EB3;
+  border-radius: 30px;
+  padding: 20px 30px;
+  margin-right: 20px;
+  margin-bottom: 80px;
+  max-width: 300px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  position: relative;
+  animation: bounce 2s infinite;
 }
 
 .speech-bubble::after {
   content: '';
   position: absolute;
-  bottom: -15px;
-  right: 40px;
-  border-width: 15px 15px 0;
+  right: -20px;
+  bottom: 20px;
+  border-width: 15px 0 15px 20px;
   border-style: solid;
-  border-color: var(--primary-color) transparent;
+  border-color: transparent #FF7EB3;
+}
+
+.mascot {
+  width: 160px;
+  height: 160px;
+  background: #FFD93D;
+  border-radius: 50% 50% 40% 40%;
+  position: relative;
+  box-shadow: inset -10px -10px 0 rgba(0,0,0,0.05), 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Mascot Details */
+.mascot-cap {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 40px;
+  background: #FF4D6D;
+  border-radius: 50px 50% 0 0;
+}
+
+.mascot-cap::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 100%;
+  width: 40px;
+  height: 10px;
+  background: #FF4D6D;
+  border-radius: 0 10px 10px 0;
+}
+
+.mascot-eye {
+  position: absolute;
+  top: 45%;
+  width: 18px;
+  height: 18px;
+  background: #2D3436;
+  border-radius: 50%;
+}
+
+.eye-left { left: 25%; }
+.eye-right { right: 25%; }
+
+.mascot-eye::before {
+  content: '';
+  position: absolute;
+  top: 2px; left: 3px;
+  width: 6px; height: 6px;
+  background: white;
+  border-radius: 50%;
+}
+
+.mascot-blush {
+  position: absolute;
+  top: 60%;
+  width: 25px;
+  height: 12px;
+  background: rgba(255, 77, 109, 0.3);
+  border-radius: 50%;
+}
+
+.blush-left { left: 15%; }
+.blush-right { right: 15%; }
+
+.mascot-mouth {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 20px;
+  border-bottom: 5px solid #2D3436;
+  border-radius: 50%;
+}
+
+/* Animations */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
-  100% { transform: translateY(0px); }
+  0% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg) translateY(-10px); }
+  100% { transform: rotate(-5deg); }
 }
 
-/* Map Styling */
-.learning-map {
-  width: 100%;
-  max-width: 1000px;
-  margin-top: 50px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  padding: 20px;
+.mascot {
+  animation: float 4s ease-in-out infinite;
 }
 
-.region-card {
-  background: var(--card-bg);
-  border-radius: 30px;
-  padding: 40px;
-  text-align: center;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-  cursor: pointer;
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 4px solid transparent;
+/* Clouds background */
+.cloud {
+  position: fixed;
+  background: white;
+  width: 200px;
+  height: 60px;
+  border-radius: 50px;
+  z-index: -1;
+  opacity: 0.8;
 }
 
-.region-card:hover {
-  transform: scale(1.05);
-  border-color: var(--secondary-color);
+.cloud::before, .cloud::after {
+  content: '';
+  position: absolute;
+  background: white;
+  border-radius: 50%;
 }
 
-.region-icon {
-  font-size: 4rem;
-  margin-bottom: 15px;
-  display: block;
-}
-
-.region-title {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--text-color);
-  margin: 0;
-}
+.cloud::before { width: 100px; height: 100px; top: -50px; left: 30px; }
+.cloud::after { width: 80px; height: 80px; top: -30px; right: 30px; }
 
