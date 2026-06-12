@@ -1,39 +1,142 @@
 :root {
-  --bg-color: #ffffff;
-  --text-color: #000000;
-  --button-bg: #eeeeee;
-  --button-text: #000000;
-}
-
-[data-theme='dark'] {
-  --bg-color: #121212;
-  --text-color: #ffffff;
-  --button-bg: #333333;
-  --button-text: #ffffff;
+  --primary-color: #FFD93D; /* Bright Yellow */
+  --secondary-color: #6BCB77; /* Soft Green */
+  --accent-color: #FF6B6B; /* Soft Red/Pink */
+  --bg-color: #F9F9F9;
+  --text-color: #333;
+  --card-bg: #FFFFFF;
+  --bubble-bg: #FFFFFF;
+  --mascot-size: 150px;
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
-  font-family: sans-serif;
-  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Quicksand', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   min-height: 100vh;
   margin: 0;
-  padding: 40px 20px;
-  box-sizing: border-box;
+  padding: 20px;
+  overflow-x: hidden;
 }
 
-button {
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: 1px solid #ccc;
-  padding: 10px 20px;
+/* Character Container */
+.mascot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Simple Mascot Shape */
+.mascot {
+  width: var(--mascot-size);
+  height: var(--mascot-size);
+  background-color: var(--primary-color);
+  border-radius: 50% 50% 45% 45%;
+  position: relative;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  animation: float 3s ease-in-out infinite;
+}
+
+.mascot::before, .mascot::after { /* Eyes */
+  content: '';
+  position: absolute;
+  top: 40%;
+  width: 15px;
+  height: 20px;
+  background-color: #333;
+  border-radius: 50%;
+}
+
+.mascot::before { left: 30%; }
+.mascot::after { right: 30%; }
+
+.mascot-mouth {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 15px;
+  border-bottom: 3px solid #333;
+  border-radius: 0 0 15px 15px;
+}
+
+/* Speech Bubble */
+.speech-bubble {
+  background: var(--bubble-bg);
+  border-radius: 20px;
+  padding: 15px 25px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  position: relative;
+  max-width: 250px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-align: center;
+  border: 3px solid var(--primary-color);
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  right: 40px;
+  border-width: 15px 15px 0;
+  border-style: solid;
+  border-color: var(--primary-color) transparent;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Map Styling */
+.learning-map {
+  width: 100%;
+  max-width: 1000px;
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 20px;
+}
+
+.region-card {
+  background: var(--card-bg);
+  border-radius: 30px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.05);
   cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s, color 0.3s;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 4px solid transparent;
+}
+
+.region-card:hover {
+  transform: scale(1.05);
+  border-color: var(--secondary-color);
+}
+
+.region-icon {
+  font-size: 4rem;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.region-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-color);
+  margin: 0;
 }
 

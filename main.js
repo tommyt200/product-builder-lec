@@ -1,17 +1,35 @@
-const themeToggle = document.getElementById('theme-toggle');
-const currentTheme = localStorage.getItem('theme') || 'light';
+const speechBubble = document.getElementById('speech-bubble');
+const regionCards = document.querySelectorAll('.region-card');
 
-if (currentTheme === 'dark') {
-  document.documentElement.setAttribute('data-theme', 'dark');
-}
+const regionMessages = {
+  space: "The universe is huge! Did you know there are billions of stars out there?",
+  ocean: "The ocean is deep and full of mysterious creatures. Let's dive in!",
+  nature: "Earth is our beautiful home. There are so many plants and animals to meet!"
+};
 
-themeToggle.addEventListener('click', () => {
-  let theme = document.documentElement.getAttribute('data-theme');
-  if (theme === 'dark') {
-    document.documentElement.removeAttribute('data-theme');
-    localStorage.setItem('theme', 'light');
-  } else {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    localStorage.setItem('theme', 'dark');
-  }
+regionCards.forEach(card => {
+  card.addEventListener('click', () => {
+    const region = card.getAttribute('data-region');
+    const message = regionMessages[region];
+    speak(message);
+    
+    // Visual feedback
+    card.style.transform = "scale(0.95)";
+    setTimeout(() => {
+      card.style.transform = "";
+    }, 150);
+  });
 });
+
+function speak(message) {
+  // Add a little "pop" animation to the bubble
+  speechBubble.style.transform = "scale(0.8)";
+  speechBubble.style.opacity = "0";
+  
+  setTimeout(() => {
+    speechBubble.textContent = message;
+    speechBubble.style.transition = "transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s";
+    speechBubble.style.transform = "scale(1)";
+    speechBubble.style.opacity = "1";
+  }, 100);
+}

@@ -3,14 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
+  <title>Kids Learning Adventure</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
   <link href='/style.css' rel='stylesheet'>
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button id="theme-toggle">Switch Theme</button>
-  
-  <div id="disqus_thread" style="margin-top: 50px; width: 80%; max-width: 800px;"></div>
+  <header style="text-align: center; margin-bottom: 30px;">
+    <h1 style="font-size: 3rem; color: var(--accent-color); margin-bottom: 10px;">Learning Adventure! 🚀</h1>
+    <p style="font-size: 1.2rem; color: #666;">What do you want to explore today?</p>
+  </header>
+
+  <div class="learning-map" id="learning-map">
+    <div class="region-card" data-region="space">
+      <span class="region-icon">🚀</span>
+      <h2 class="region-title">Space Adventure</h2>
+    </div>
+    <div class="region-card" data-region="ocean">
+      <span class="region-icon">🌊</span>
+      <h2 class="region-title">Ocean Discovery</h2>
+    </div>
+    <div class="region-card" data-region="nature">
+      <span class="region-icon">🌲</span>
+      <h2 class="region-title">Nature Explorer</h2>
+    </div>
+  </div>
+
+  <div class="mascot-container">
+    <div class="speech-bubble" id="speech-bubble">
+      Hi! I'm your guide! Ready to learn something amazing? Click a region to start!
+    </div>
+    <div class="mascot">
+      <div class="mascot-mouth"></div>
+    </div>
+  </div>
+
+  <div id="disqus_thread" style="margin-top: 100px; width: 80%; max-width: 800px;"></div>
   <script>
     var disqus_config = function () {
       this.page.url = window.location.href;
@@ -23,7 +50,6 @@
       (d.head || d.body).appendChild(s);
     })();
   </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
   <script defer type="text/javascript" src="/main.js"></script>
 </body>
